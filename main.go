@@ -5,17 +5,18 @@ import (
 	"log"
 
 	"github.com/sensu-community/sensu-plugin-sdk/sensu"
+	"github.com/sensu-community/sensu-plugin-sdk/templates"
 	"github.com/sensu/sensu-go/types"
 )
 
 // Config represents the handler plugin config.
 type Config struct {
 	sensu.PluginConfig
-	Example string
+	Template string
 }
 
 var (
-	plugin = Config{
+	config = Config{
 		PluginConfig: sensu.PluginConfig{
 			Name:     "template-toolkit-command",
 			Short:    "Sensuctl command plugin for validating and testing Sensu plugin templates",
@@ -25,30 +26,35 @@ var (
 
 	options = []*sensu.PluginConfigOption{
 		&sensu.PluginConfigOption{
-			Path:      "example",
-			Env:       "HANDLER_EXAMPLE",
-			Argument:  "example",
-			Shorthand: "e",
+			Env:       "TEMPLATE",
+			Argument:  "template",
+			Shorthand: "t",
 			Default:   "",
-			Usage:     "An example string configuration option",
-			Value:     &plugin.Example,
+			Usage:     "A template string, in Golang text/template format",
+			Value:     &config.Template,
 		},
 	}
 )
 
 func main() {
-	handler := sensu.NewGoHandler(&plugin.PluginConfig, options, checkArgs, executeHandler)
+	handler := sensu.NewGoHandler(&config.PluginConfig, options, checkArgs, executeHandler)
 	handler.Execute()
 }
 
 func checkArgs(_ *types.Event) error {
-	if len(plugin.Example) == 0 {
-		return fmt.Errorf("--example or HANDLER_EXAMPLE environment variable is required")
+	if len(config.Template) == 0 {
+		return fmt.Errorf("--template variable is required")
 	}
 	return nil
 }
 
 func executeHandler(event *types.Event) error {
-	log.Println("executing handler with --example", plugin.Example)
+	log.Println("executing handler with --template", config.Template)
+	description, err := templates.EvalTemplate("description", config.Template, event)
+	if err != nil {
+		log.Println("Error processing template:\n", err)
+	} else {
+		log.Println("Template String Output:", description)
+	}
 	return nil
 }

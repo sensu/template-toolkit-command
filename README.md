@@ -3,32 +3,8 @@
 [![Go Test](https://github.com/jspaleta/template-toolkit-command/workflows/Go%20Test/badge.svg)](https://github.com/jspaleta/template-toolkit-command/actions?query=workflow%3A%22Go+Test%22)
 [![goreleaser](https://github.com/jspaleta/template-toolkit-command/workflows/goreleaser/badge.svg)](https://github.com/jspaleta/template-toolkit-command/actions?query=workflow%3Agoreleaser)
 
-# Handler Plugin Template
+# Template Toolkit Command
 
-## Overview
-handler-plugin-template is a template repository which wraps the [Sensu Plugin SDK][2].
-To use this project as a template, click the "Use this template" button from the main project page.
-Once the repository is created from this template, you can use the [Sensu Plugin Tool][9] to
-populate the templated fields with the proper values.
-
-## Functionality
-
-After successfully creating a project from this template, update the `Config` struct with any
-configuration options for the plugin, map those values as plugin options in the variable `options`,
-and customize the `checkArgs` and `executeHandler` functions in [main.go][7].
-
-When writing or updating a plugin's README from this template, review the Sensu Community
-[plugin README style guide][3] for content suggestions and guidance. Remove everything
-prior to `# Template Toolkit` from the generated README file, and add additional context about the
-plugin per the style guide.
-
-## Releases with Github Actions
-
-To release a version of your project, simply tag the target sha with a semver release without a `v`
-prefix (ex. `1.0.0`). This will trigger the [GitHub action][5] workflow to [build and release][4]
-the plugin with goreleaser. Register the asset with [Bonsai][8] to share it with the community!
-
-***
 
 # Template Toolkit
 
@@ -46,6 +22,10 @@ the plugin with goreleaser. Register the asset with [Bonsai][8] to share it with
 
 ## Overview
 
+template-toolkit-command is a Sensuctl command plugin using the [Sensu Plugin SDK][2].
+This Sensuctl command plugin allows you to test and validate Sensu plugin template strings, to ensure the templating logic works correctly before you use them in other plugins.
+
+
 The Template Toolkit is a [Sensu Handler][6] that ...
 
 ## Files
@@ -54,58 +34,16 @@ The Template Toolkit is a [Sensu Handler][6] that ...
 
 ## Configuration
 
-### Asset registration
+### Sensuctl command asset registration
 
-[Sensu Assets][10] are the best way to make use of this plugin. If you're not using an asset, please
-consider doing so! If you're using sensuctl 5.13 with Sensu Backend 5.13 or later, you can use the
-following command to add the asset:
+Sensuctl command Assets are the best way to make use of this plugin. If you're not using an asset, please consider doing so! You can use the following command to add the asset:
 
 ```
-sensuctl asset add jspaleta/template-toolkit-command
+sensuctl command add jspaleta/template-toolkit-command
 ```
-
-If you're using an earlier version of sensuctl, you can find the asset on the [Bonsai Asset Index][https://bonsai.sensu.io/assets/jspaleta/template-toolkit-command].
-
-### Handler definition
-
-```yml
----
-type: Handler
-api_version: core/v2
-metadata:
-  name: template-toolkit-command
-  namespace: default
-spec:
-  command: template-toolkit-command --example example_arg
-  type: pipe
-  runtime_assets:
-  - jspaleta/template-toolkit-command
-```
-
-#### Proxy Support
-
-This handler supports the use of the environment variables HTTP_PROXY,
-HTTPS_PROXY, and NO_PROXY (or the lowercase versions thereof). HTTPS_PROXY takes
-precedence over HTTP_PROXY for https requests.  The environment values may be
-either a complete URL or a "host[:port]", in which case the "http" scheme is assumed.
-
-### Annotations
-
-All arguments for this handler are tunable on a per entity or check basis based on annotations.  The
-annotations keyspace for this handler is `sensu.io/plugins/template-toolkit-command/config`.
 
 #### Examples
 
-To change the example argument for a particular check, for that checks's metadata add the following:
-
-```yml
-type: CheckConfig
-api_version: core/v2
-metadata:
-  annotations:
-    sensu.io/plugins/template-toolkit-command/config/example-argument: "Example change"
-[...]
-```
 
 ## Installation from source
 

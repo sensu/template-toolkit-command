@@ -49,7 +49,7 @@ func checkArgs(_ *types.Event) error {
 }
 
 func executeHandler(event *types.Event) error {
-	log.Println("executing handler with --template", config.Template)
+	log.Println("executing command with --template", config.Template)
 	description, err := templates.EvalTemplate("description", config.Template, event)
 	if err != nil {
 		log.Println("Error processing template:\n", err)

@@ -42,7 +42,15 @@ Sensuctl command Assets are the best way to make use of this plugin. If you're n
 sensuctl command add jspaleta/template-toolkit-command
 ```
 
-#### Examples
+### Sensuctl command usage
+Requires event json representation stdin to operate correctly.
+
+```
+$ cat event.json | sensuctl command execute jspaleta/template-toolkit-command --template "{{ .Check.Name}}"
+2020/09/18 14:41:26 executing command with --template {{ .Check.Name }}
+2020/09/18 14:41:26 Template String Output: keepalive
+
+```
 
 
 ## Installation from source

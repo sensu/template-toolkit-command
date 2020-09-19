@@ -45,13 +45,27 @@ sensuctl command add jspaleta/template-toolkit-command
 ### Sensuctl command usage
 Requires event json representation stdin to operate correctly.
 
+To test the output of a template:
 ```
-$ cat event.json | sensuctl command execute jspaleta/template-toolkit-command --template "{{ .Check.Name}}"
+$ cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- --template "{{ .Check.Name}}"
 2020/09/18 14:41:26 executing command with --template {{ .Check.Name }}
 2020/09/18 14:41:26 Template String Output: keepalive
 
 ```
 
+To see the variable names available for use in a template:
+```
+cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
+.Entity{
+    .EntityClass: "agent",
+    .System:      .System{
+[...]
+.Check{
+    .Command:           "",
+    .Handlers:          {"keepalive"},
+    .HighFlapThreshold: 0x0,
+[...]
+```
 
 ## Installation from source
 

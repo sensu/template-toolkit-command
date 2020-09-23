@@ -10,33 +10,47 @@
 
 ## Table of Contents
 - [Overview](#overview)
-- [Files](#files)
 - [Usage examples](#usage-examples)
 - [Configuration](#configuration)
-  - [Asset registration](#asset-registration)
-  - [Handler definition](#handler-definition)
-  - [Annotations](#annotations)
+  - [Sensuctl command asset registration](#sensuctl-command-asset-registration)
+  - [Sensuctl command usage](#sensuctl-command-usage)
 - [Installation from source](#installation-from-source)
-- [Additional notes](#additional-notes)
 - [Contributing](#contributing)
 
 ## Overview
 
-template-toolkit-command is a Sensuctl command plugin using the [Sensu Plugin SDK][2].
-This Sensuctl command plugin allows you to test and validate Sensu plugin template strings, to ensure the templating logic works correctly before you use them in other plugins.
-
-
-The Template Toolkit is a [Sensu Handler][6] that ...
-
-## Files
+template-toolkit-command is a Sensuctl command plugin using the
+[Sensu Plugin SDK][2].  This Sensuctl command plugin allows you to test and
+validate Sensu plugin template strings, to ensure the templating logic works
+correctly before you use them in other plugins.
 
 ## Usage examples
+```
+Sensuctl command plugin for validating and testing Sensu plugin templates
+
+Usage:
+  template-toolkit-command [flags]
+  template-toolkit-command [command]
+
+Available Commands:
+  help        Help about any command
+  version     Print the version number of this plugin
+
+Flags:
+  -t, --template string   A template string, in Golang text/template format
+  -d, --dump-names        Dump the event object names that can be used in a Golang template
+  -h, --help              help for template-toolkit-command
+
+Use "template-toolkit-command [command] --help" for more information about a command.
+```
 
 ## Configuration
 
 ### Sensuctl command asset registration
 
-Sensuctl command Assets are the best way to make use of this plugin. If you're not using an asset, please consider doing so! You can use the following command to add the asset:
+Sensuctl command assets are the best way to make use of this plugin. If
+you're not using an asset, please consider doing so! You can use the
+following command to add the asset:
 
 ```
 sensuctl command add jspaleta/template-toolkit-command
@@ -55,7 +69,7 @@ $ cat event.json | sensuctl command execute jspaleta/template-toolkit-command --
 
 To see the variable names available for use in a template:
 ```
-cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
+event.json | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
 .Entity{
     .EntityClass: "agent",
     .System:      .System{
@@ -69,9 +83,10 @@ cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- -
 
 ## Installation from source
 
-The preferred way of installing and deploying this plugin is to use it as an Asset. If you would
-like to compile and install the plugin from source or contribute to it, download the latest version
-or create an executable script from this source.
+The preferred way of installing and deploying this plugin is to use it as an
+asset. If you would like to compile and install the plugin from source or
+contribute to it, download the latest version or create an executable from
+this source.
 
 From the local path of the template-toolkit-command repository:
 
@@ -79,19 +94,9 @@ From the local path of the template-toolkit-command repository:
 go build
 ```
 
-## Additional notes
-
 ## Contributing
 
 For more information about contributing to this plugin, see [Contributing][1].
 
 [1]: https://github.com/sensu/sensu-go/blob/master/CONTRIBUTING.md
 [2]: https://github.com/sensu-community/sensu-plugin-sdk
-[3]: https://github.com/sensu-plugins/community/blob/master/PLUGIN_STYLEGUIDE.md
-[4]: https://github.com/sensu-community/handler-plugin-template/blob/master/.github/workflows/release.yml
-[5]: https://github.com/sensu-community/handler-plugin-template/actions
-[6]: https://docs.sensu.io/sensu-go/latest/reference/handlers/
-[7]: https://github.com/sensu-community/handler-plugin-template/blob/master/main.go
-[8]: https://bonsai.sensu.io/
-[9]: https://github.com/sensu-community/sensu-plugin-tool
-[10]: https://docs.sensu.io/sensu-go/latest/reference/assets/

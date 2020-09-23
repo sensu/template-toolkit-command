@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"regexp"
 
 	"github.com/kr/pretty"
@@ -71,12 +70,12 @@ func executeHandler(event *types.Event) error {
 		return nil
 	}
 
-	log.Println("executing command with --template", config.Template)
+	fmt.Printf("Executing command with --template %s\n", config.Template)
 	description, err := templates.EvalTemplate("description", config.Template, event)
 	if err != nil {
-		log.Println("Error processing template:\n", err)
+		fmt.Printf("Error processing template: %v\n", err)
 	} else {
-		log.Println("Template String Output:", description)
+		fmt.Printf("Template String Output: %q\n", description)
 	}
 	return nil
 }

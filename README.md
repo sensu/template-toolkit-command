@@ -69,14 +69,16 @@ $ cat event.json | sensuctl command execute jspaleta/template-toolkit-command --
 
 To see the variable names available for use in a template:
 ```
-event.json | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
+sensuctl event info webserver01 check-http | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
 .Entity{
     .EntityClass: "agent",
     .System:      .System{
+        .Hostname:        "webserver01",
+        .OS:              "linux",
 [...]
 .Check{
-    .Command:           "",
-    .Handlers:          {"keepalive"},
+    .Command:           "check-http.rb -u http://webserver01/",
+    .Handlers:          {"slack", "email"},
     .HighFlapThreshold: 0x0,
 [...]
 ```

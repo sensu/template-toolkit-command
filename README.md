@@ -65,7 +65,7 @@ cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- -
 Executing command with --template {{ .Check.Name }}
 Template String Output: "keepalive"
 
-sensuctl event info webserver01 check-http --format json | sensuctl command execute jspaleta//template-toolkit-command -- --template "Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}"
+sensuctl event info webserver01 check-http --format json | sensuctl command execute jspaleta/template-toolkit-command -- --template "Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}"
 Executing command with --template Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}
 Template String Output: Server: "webserver01 Check: check-http Status: passing"
 ```

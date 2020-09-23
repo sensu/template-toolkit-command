@@ -60,13 +60,7 @@ func checkArgs(_ *types.Event) error {
 
 func executeHandler(event *types.Event) error {
 	if config.DumpNames {
-		prettyPrint(event.Entity)
-		if event.HasCheck() {
-			prettyPrint(event.Check)
-		}
-		if event.HasMetrics() {
-			prettyPrint(event.Metrics)
-		}
+		prettyPrint(event)
 		return nil
 	}
 

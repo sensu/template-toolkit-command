@@ -1,4 +1,4 @@
-module github.com/jspaleta/template-toolkit-command
+module github.com/sensu/template-toolkit-command
 
 go 1.13
 

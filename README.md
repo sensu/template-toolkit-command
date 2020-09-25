@@ -1,7 +1,7 @@
-[![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/jspaleta/template-toolkit-command)
-![goreleaser](https://github.com/jspaleta/template-toolkit-command/workflows/goreleaser/badge.svg)
-[![Go Test](https://github.com/jspaleta/template-toolkit-command/workflows/Go%20Test/badge.svg)](https://github.com/jspaleta/template-toolkit-command/actions?query=workflow%3A%22Go+Test%22)
-[![goreleaser](https://github.com/jspaleta/template-toolkit-command/workflows/goreleaser/badge.svg)](https://github.com/jspaleta/template-toolkit-command/actions?query=workflow%3Agoreleaser)
+[![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/sensu/template-toolkit-command)
+![goreleaser](https://github.com/sensu/template-toolkit-command/workflows/goreleaser/badge.svg)
+[![Go Test](https://github.com/sensu/template-toolkit-command/workflows/Go%20Test/badge.svg)](https://github.com/sensu/template-toolkit-command/actions?query=workflow%3A%22Go+Test%22)
+[![goreleaser](https://github.com/sensu/template-toolkit-command/workflows/goreleaser/badge.svg)](https://github.com/sensu/template-toolkit-command/actions?query=workflow%3Agoreleaser)
 
 # Template Toolkit Command
 
@@ -53,7 +53,7 @@ you're not using an asset, please consider doing so! You can use the
 following command to add the asset:
 
 ```
-sensuctl command install template-toolkit-command jspaleta/template-toolkit-command
+sensuctl command install template-toolkit-command sensu/template-toolkit-command
 ```
 
 ### Sensuctl command usage

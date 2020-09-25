@@ -53,7 +53,7 @@ you're not using an asset, please consider doing so! You can use the
 following command to add the asset:
 
 ```
-sensuctl command add jspaleta/template-toolkit-command
+sensuctl command add template-toolkit-command jspaleta/template-toolkit-command
 ```
 
 ### Sensuctl command usage
@@ -61,18 +61,18 @@ Requires event json representation stdin to operate correctly.
 
 To test the output of a template:
 ```
-cat event.json | sensuctl command execute jspaleta/template-toolkit-command -- --template "{{ .Check.Name}}"
+cat event.json | sensuctl command exec template-toolkit-command -- --template "{{ .Check.Name}}"
 Executing command with --template {{ .Check.Name }}
 Template String Output: "keepalive"
 
-sensuctl event info webserver01 check-http --format json | sensuctl command execute jspaleta/template-toolkit-command -- --template "Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}"
+sensuctl event info webserver01 check-http --format json | sensuctl command exec template-toolkit-command -- --template "Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}"
 Executing command with --template Server: {{.Entity.Name}} Check: {{.Check.Name}} Status: {{.Check.State}}
 Template String Output: Server: "webserver01 Check: check-http Status: passing"
 ```
 
 To see the variable names available for use in a template:
 ```
-sensuctl event info webserver01 check-http | sensuctl command execute jspaleta/template-toolkit-command -- --dump-names
+sensuctl event info webserver01 check-http --format json | sensuctl command exec template-toolkit-command -- --dump-names
 .Entity{
     .EntityClass: "agent",
     .System:      .System{

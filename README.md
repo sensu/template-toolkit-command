@@ -53,7 +53,7 @@ you're not using an asset, please consider doing so! You can use the
 following command to add the asset:
 
 ```
-sensuctl command add template-toolkit-command jspaleta/template-toolkit-command
+sensuctl command install template-toolkit-command jspaleta/template-toolkit-command
 ```
 
 ### Sensuctl command usage

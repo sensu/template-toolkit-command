@@ -1,3 +1,8 @@
+> [!WARNING]
+> **This repository is scheduled to be archived on 13th November 2026.**
+>
+> After that date it will be read-only: no new commits, issues, or pull requests, and no further maintenance or security updates will be issued.
+
 [![Sensu Bonsai Asset](https://img.shields.io/badge/Bonsai-Download%20Me-brightgreen.svg?colorB=89C967&logo=sensu)](https://bonsai.sensu.io/assets/sensu/template-toolkit-command)
 ![goreleaser](https://github.com/sensu/template-toolkit-command/workflows/goreleaser/badge.svg)
 [![Go Test](https://github.com/sensu/template-toolkit-command/workflows/Go%20Test/badge.svg)](https://github.com/sensu/template-toolkit-command/actions?query=workflow%3A%22Go+Test%22)
